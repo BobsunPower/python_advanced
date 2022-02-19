@@ -1,3 +1,3 @@
-stk = [i for i in input()]
+stk = [input()]
 while stk:
     print(stk.pop(), end='')
