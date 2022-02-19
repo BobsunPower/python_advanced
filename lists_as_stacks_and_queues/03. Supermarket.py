@@ -1,12 +1,12 @@
 from collections import deque
-ppl = deque()
+deq = deque()
 while True:
     cmd = input()
     if cmd == "End":
-        print(f"{len(ppl)} people remaining.")
+        print(f"{len(deq)} people remaining.")
         break
     if cmd == "Paid":
-        while ppl:
-            print(ppl.popleft())
+        while deq:
+            print(deq.popleft())
     else:
-        ppl.append(cmd)
+        deq.append(cmd)
