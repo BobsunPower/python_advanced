@@ -1,11 +1,8 @@
 inv = set()
-for _ in range(int(input())):
-    inv.add(input())
+[inv.add(input()) for _ in range(int(input()))]
 while True:
     cmd = input()
     if cmd == "END":
         break
-    if cmd in inv:
-        inv.remove(cmd)
-print(len(inv))
-print("\n".join(sorted(inv)))
+    inv.remove(cmd) if cmd in inv else None
+print(len(inv), '\n', '\n'.join(sorted(inv)))
