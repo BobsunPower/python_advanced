@@ -1,4 +1,4 @@
-lst, tot, evn, odd = [], 0 , set(), set()
+lst, tot, evn, odd = [], 0, set(), set()
 for i in range(1, int(input()) + 1):
     lst = [(sum(ord(letter) for letter in input()))]
     res = sum(lst) // i
