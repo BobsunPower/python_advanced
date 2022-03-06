@@ -1,3 +1,4 @@
+# TODO
 def valid_command(data: list) -> bool:
     if tokens[0] != 'swap':
         return False
