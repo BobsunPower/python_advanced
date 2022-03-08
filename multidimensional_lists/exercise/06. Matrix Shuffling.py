@@ -1,32 +1,34 @@
-rows, cols = [int(x) for x in input().split()]
-matrix = [[x for x in input().split()] for _ in range(rows)]
-
-
-def valid_command(data: list) -> bool:
-    if tokens[0] != 'swap': return False
-    if len(tokens) != 5: return False
-    coordinates = [int(x) for x in tokens[1:]]
-    if min(coordinates) < 0: return False
-    x1, y1, x2, y2 = coordinates
-    if max(x1, x2) > rows - 1: return False
-    if max(y1, y2) > cols - 1: return False
+def valid_command() -> bool:
+    if pos[0] != 'swap':
+        return False
+    if len(pos) != 5:
+        return False
+    ids = [int(x) for x in pos[1:]]
+    if min(ids) < 0:
+        return False
+    z, x, c, v = ids
+    if max(z, c) > row - 1:
+        return False
+    if max(x, v) > col - 1:
+        return False
     return True
 
 
 def print_matrix(data: list) -> None:
-    for row in data:
-        print(*row, sep=' ')
+    for i in data:
+        print(*i, sep=' ')
 
 
+row, col = [int(x) for x in input().split()]
+mtx = [[x for x in input().split()] for _ in range(row)]
 while True:
-    input_line = input()
-    if input_line == 'END': break
-
-    tokens = input_line.split()
-    if valid_command(tokens):
-        x1, y1, x2, y2 = [int(x) for x in tokens[1:]]
-        matrix[x1][y1], matrix[x2][y2] = matrix[x2][y2], matrix[x1][y1]
-        print_matrix(matrix)
-
+    cmd = input()
+    if cmd == 'END':
+        break
+    pos = cmd.split()
+    if valid_command():
+        q, w, e, r = [int(x) for x in pos[1:]]
+        mtx[q][w], mtx[e][r] = mtx[e][r], mtx[q][w]
+        print_matrix(mtx)
     else:
         print('Invalid input!')
