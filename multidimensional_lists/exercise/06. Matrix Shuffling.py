@@ -1,3 +1,4 @@
+# TODO
 def valid_command() -> bool:
     if pos[0] != 'swap':
         return False
