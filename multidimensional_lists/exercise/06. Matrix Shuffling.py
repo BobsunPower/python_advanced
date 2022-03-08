@@ -1,35 +1,16 @@
-# TODO
-def valid_command() -> bool:
-    if pos[0] != 'swap':
-        return False
-    if len(pos) != 5:
-        return False
-    ids = [int(x) for x in pos[1:]]
-    if min(ids) < 0:
-        return False
-    z, x, c, v = ids
-    if max(z, c) > row - 1:
-        return False
-    if max(x, v) > col - 1:
-        return False
-    return True
-
-
-def print_matrix(data: list) -> None:
-    for i in data:
-        print(*i, sep=' ')
-
-
-row, col = [int(x) for x in input().split()]
-mtx = [[x for x in input().split()] for _ in range(row)]
+r, c = [int(i) for i in input().split()]
+mtx = [[i for i in input().split()] for i in range(r)]
 while True:
     cmd = input()
-    if cmd == 'END':
+    if cmd == "END":
         break
-    pos = cmd.split()
-    if valid_command():
-        q, w, e, r = [int(x) for x in pos[1:]]
-        mtx[q][w], mtx[e][r] = mtx[e][r], mtx[q][w]
-        print_matrix(mtx)
+    if "swap" not in cmd or len(cmd.split()) != 5:
+        print(f"Invalid input!")
     else:
-        print('Invalid input!')
+        n = [int(i) for i in cmd.split()[1:]]
+        lst = [item for item in n if item < 0 or item > len(mtx)]
+        if len(lst) > 0:
+            print(f"Invalid input!")
+        else:
+            mtx[n[0]][n[1]], mtx[n[2]][n[3]] = mtx[n[2]][n[3]], mtx[n[0]][n[1]]
+            [print(*i) for i in mtx]
