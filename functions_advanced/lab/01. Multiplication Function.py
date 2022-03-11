@@ -1,2 +1,2 @@
 from functools import reduce
-multiply = lambda *args: reduce(lambda x, y: x * y, args)
+multiply = lambda *arg: reduce(lambda x, y: x * y, arg)
