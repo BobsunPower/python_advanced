@@ -1,11 +1,9 @@
-# TODO
-def fill_the_box(height, length, width, *args, space=None):
-    args = list(args)
-    if space is None:
-        space = int(height) * int(width) * int(length)
-    if args[0] == "Finish":
-        return f"There is free space in the box. You could put {space} more cubes."
-    elif space - int(args[0]) <= 0:
-        args[0] -= space
-        return f"No more free space! You have {sum(map(int, args[:args.index('Finish')]))} more cubes."
-    return fill_the_box(height, length, width, *args[1:], space=space - int(args[0]))
+def fill_the_box(hgt, lth, wth, *arg, spc=None):
+    arg = list(arg)
+    spc = int(hgt) * int(wth) * int(lth) if spc is None else spc
+    if arg[0] == "Finish":
+        return f"There is free space in the box. You could put {spc} more cubes."
+    elif spc - int(arg[0]) <= 0:
+        arg[0] -= spc
+        return f"No more free space! You have {sum(map(int, arg[:arg.index('Finish')]))} more cubes."
+    return fill_the_box(hgt, lth, wth, *arg[1:], spc=spc - int(arg[0]))
